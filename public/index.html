@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Containers 101</title>
+  <style>
+    body { margin: 0; font-family: system-ui, sans-serif; background: #f4f4f5; color: #18181b; }
+    main { max-width: 760px; margin: 8vh auto; padding: 32px; }
+    .card { background: white; border-radius: 18px; padding: 36px; box-shadow: 0 10px 35px rgba(0,0,0,.08); }
+    .badge { display: inline-block; padding: 6px 10px; border-radius: 999px; background: #e4e4e7; font-size: 13px; }
+    code { background: #f4f4f5; padding: 3px 6px; border-radius: 5px; }
+    a { color: inherit; }
+    pre { background: #18181b; color: #fafafa; padding: 16px; border-radius: 10px; overflow: auto; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="card">
+      <span class="badge">Containers 101</span>
+      <h1>From localhost to production</h1>
+      <p>Status: <strong>● Running</strong></p>
+      <p>Endpoints: <code>/api/status</code> <code>/api/info</code> <code>/api/student</code>.</p>
+      <pre id="status">Loading...</pre>
+      <pre id="info">Loading...</pre>
+      <pre id="student">Loading...</pre>
+    </div>
+  </main>
+  <script>
+    fetch("/api/status")
+      .then(r => r.json())
+      .then(data => {
+        document.getElementById("status").textContent =
+          JSON.stringify(data, null, 2);
+      })
+      .catch(err => {
+        document.getElementById("status").textContent = err.message;
+      });
+  </script>
+  <script>
+    fetch("/api/info")
+      .then(r => r.json())
+      .then(data => {
+        document.getElementById("info").textContent =
+          JSON.stringify(data, null, 2);
+      })
+      .catch(err => {
+        document.getElementById("info").textContent = err.message;
+      });
+  </script>
+  <script>
+    fetch("/api/student")
+      .then(r => r.json())
+      .then(data => {
+        document.getElementById("student").textContent =
+          JSON.stringify(data, null, 2);
+      })
+      .catch(err => {
+        document.getElementById("student").textContent = err.message;
+      });
+  </script>
+</body>
+</html>

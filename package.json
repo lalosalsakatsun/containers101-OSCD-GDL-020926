@@ -1,0 +1,13 @@
+{
+  "name": "containers-101",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Application for the Containers 101 workshop",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
